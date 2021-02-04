@@ -1,5 +1,7 @@
 .card-body{
     padding-bottom: 0;
+    background: rgb(244 244 244);
+    box-shadow: #bebebe 1px 1px 10px 0px;
 }
 
 .calc-row {
@@ -18,6 +20,10 @@
 .no-gutters>div[class^="col"]:nth-last-child(1){
     margin-right: 0;
 } */
+
+.calc{
+    margin-top: 10px;
+}
 
 .input-window {
     text-align: end;

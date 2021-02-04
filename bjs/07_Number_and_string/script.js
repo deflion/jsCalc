@@ -25,6 +25,13 @@ document.querySelector('#btn_percent').addEventListener('click', function () {
     calc = true;
 })
 
+document.querySelector('#btn_sqrt').addEventListener('click', function () {
+    lastOperand = parseFloat(inputWindow.value);
+    operation = 'sqrt';
+    inputWindow.value = Math.sqrt(lastOperand);
+    calc = true;
+})
+
 document.querySelector('#btn_sum').addEventListener('click', function () {
     lastOperand = parseFloat(inputWindow.value);
     operation = 'sum';

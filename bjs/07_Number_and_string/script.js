@@ -40,13 +40,17 @@ document.querySelector('#btn_sum').addEventListener('click', function () {
 })
 
 document.querySelector('#btn_substr').addEventListener('click', function () {
-    if (lastOperand == 0 || inputWindow.value === '0' ){
-        inputWindow.value = "-";
-    } else {
-        lastOperand = parseFloat(inputWindow.value);
-        operation = 'substrction';
-        inputWindow.value = '0';
-    }
+    lastOperand = parseFloat(inputWindow.value);
+    operation = 'substrction';
+    inputWindow.value = '0';
+
+    // if (lastOperand == 0 || inputWindow.value === '0' ){
+    //     inputWindow.value = "-";
+    // } else {
+    //     lastOperand = parseFloat(inputWindow.value);
+    //     operation = 'substrction';
+    //     inputWindow.value = '0';
+    // }
     
 })
 
@@ -82,20 +86,26 @@ document.querySelector('#btn_result').addEventListener('click', function () {
         result = lastOperand / parseFloat(inputWindow.value);
         operation = null;
         lastOperand = 0;
-        inputWindow.value = result.parseFloat(result.toString().slice(0,-1));
+        int = Math.trunc(result);
+        float = result - int ? parseFloat((result - int).toString().slice(0,-1)) : "";
+        inputWindow.value = `${int+float}`;
     }
 
     if (operation === 'multiply'){
         result = lastOperand * parseFloat(inputWindow.value);
         operation = null;
         lastOperand = 0;
-        inputWindow.value = parseFloat(result.toString().slice(0,-1));
+        int = Math.trunc(result);
+        float = result - int ? parseFloat((result - int).toString().slice(0,-1)) : "";
+        inputWindow.value = `${int+float}`;
         
     }
 
     calc = true;
     
 })
+
+// buttons 0-9 , dotte
 
 document.querySelector('#btn_1').addEventListener('click', function () {
     if (calc || inputWindow.value === "0"){
@@ -198,5 +208,7 @@ document.querySelector('#btn_dot').addEventListener('click', function () {
     }
 })
 
+
+console.log(calc);
 
 

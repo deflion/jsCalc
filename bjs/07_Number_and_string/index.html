@@ -19,7 +19,7 @@
                         
                         <div class="row no-gutters">
                             <div class="col">
-                                <button class="btn btn-outline-danger form-control" id="btn_clr">AC</button>
+                                <button class="btn btn-danger form-control" id="btn_clr">Cls</button>
                             </div>
                             <div class="col">
                                 <button class="btn btn-outline-danger form-control" id="btn_del"><=</button>
@@ -82,8 +82,10 @@
                         </div>
 
                         <div class="row no-gutters">
-
-                            <div class="col-2">
+                            <div class="col">
+                                <button class="btn btn-outline-danger form-control disabled" id="btn_negative">+/-</button>
+                            </div>
+                            <div class="col">
                                 <button class="btn btn-outline-danger form-control" id="btn_dot">.</button>
                             </div>
                             <div class="col">
@@ -106,6 +108,23 @@
                 </div>
             </div>
         </div>
+
+        <div class="col col-4 offset-4-md">
+            <div class="form-group">
+                <div id="history" class="card">
+                    <div class="card-body">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <textarea class="form-control" id="historyList" readonly>
+
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <script src="script.js"></script>

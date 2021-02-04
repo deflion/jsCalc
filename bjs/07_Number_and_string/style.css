@@ -35,6 +35,23 @@
     color: #e8e8e8;
 }
 
+#history{
+    height: 360px;
+    width: 250px;
+}
+
+#historyList{
+    resize: none;
+    margin-bottom: 1.25rem;
+    display: block;
+    height: 310px;
+    text-align: right;
+}
+
+#historyList[readonly]{
+    background-color: white;
+}
+
 .copyright{
     display: block;
     font-size: small;

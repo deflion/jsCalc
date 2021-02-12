@@ -2,7 +2,7 @@
 
 <img src="https://lms.skillfactory.ru/assets/courseware/v1/a9a4d8cfeecf50974f864b002b87b738/asset-v1:SkillFactory+PHP-2.0+2020+type@asset+block/PHP_9_open_5.svg" style="height:500px ">
 
-Создание простого [**калькулятора**](https://deflion.github.io/php/bjs/07_Number_and_string/): сумма, разность, произведение, деление.
+Создание простого [**калькулятора**](https://deflion.github.io/php/bjs/07_Number_and_string/project): сумма, разность, произведение, деление.
 <br>
 <br>
 

@@ -4,7 +4,6 @@ let calc = null;
 
 const inputWindow = document.querySelector('#inputWindow');
 
-
 document.querySelector('#btn_clr').addEventListener('click', function () {
     lastOperand = 0;
     operation = null;

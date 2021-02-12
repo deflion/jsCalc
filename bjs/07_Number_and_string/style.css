@@ -9,18 +9,6 @@
     font-family: 'Share Tech Mono', monospace;
 }
 
-/* .no-gutters>div[class^="col"]:first-child{
-    margin-left: 0px;
-}
-
-.no-gutters>.col, .no-gutters>div[class^="col"]{
-    margin: 5px;
-}
-
-.no-gutters>div[class^="col"]:nth-last-child(1){
-    margin-right: 0;
-} */
-
 .calc{
     margin-top: 10px;
 }
@@ -45,7 +33,6 @@
     margin-bottom: 1.25rem;
     display: block;
     height: 310px;
-    text-align: right;
 }
 
 #historyList[readonly]{

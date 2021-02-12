@@ -12,9 +12,18 @@ orderNumberField.innerText = orderNumber;
 answerField.innerText = `Вы загадали число ${answerNumber }?`;
 
 document.querySelector('#btnRetry').addEventListener('click', function () {
-    minValue = 0;
-    maxValue = 100;
-    orderNumber = 0;
+    minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
+    maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+    answerNumber  = Math.floor((minValue + maxValue) / 2);
+    orderNumber = 1;
+    gameRun = true;
+
+    let orderNumberField = document.querySelector('#orderNumberField');
+    let answerField = document.querySelector('#answerField');
+
+    orderNumberField.innerText = orderNumber;
+    answerField.innerText = `Вы загадали число ${answerNumber }?`;
 })
 
 document.querySelector('#btnOver').addEventListener('click', function () {

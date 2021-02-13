@@ -145,13 +145,13 @@ document.querySelector('#btnEqual').addEventListener('click', function () {
     }
 })
 
-//Изменение текста в span.min при заполнении input.minValue
+//Изменение текста в span.min при заполнении input#minValue
 
 document.querySelector('#minValue').addEventListener('keyup', function(){
     document.querySelector('.min').textContent = document.querySelector('#minValue').value;
 })
 
-//Изменение текста в span.max при заполнении input.maxValue
+//Изменение текста в span.max при заполнении input#maxValue
 
 document.querySelector('#maxValue').addEventListener('keyup', function(){
     document.querySelector('.max').textContent = document.querySelector('#maxValue').value;

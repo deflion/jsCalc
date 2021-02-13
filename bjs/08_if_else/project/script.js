@@ -8,14 +8,14 @@
 document.querySelector('#start').addEventListener('click', function() {
     document.querySelector('.button').setAttribute('style', 'display:none');
     document.querySelector('.game').setAttribute('style', 'display:block');
-    GameStart();
+    gameStart();
 })
 
 /*
 Функция начала игры
 */
 
-function GameStart() {
+function gameStart() {
 
     minValue = parseInt(document.querySelector('#minValue').value);
     maxValue = parseInt(document.querySelector('#maxValue').value);
@@ -99,7 +99,7 @@ document.querySelector('#btnRetry').addEventListener('click', function () {
     document.querySelector('.game').setAttribute('style', 'display:none');
     document.querySelector('#minValue').value = null;
     document.querySelector('#maxValue').value = null;
-    GameStart();
+    gameStart();
 })
 
 // Функция кнопки "Больше" 

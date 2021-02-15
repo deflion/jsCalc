@@ -154,11 +154,30 @@ const personGenerator = {
     randomDate: function() {
         let year = this.randomIntNumber(1970,2021);
 
-        const mounth30 = [4,6,9,11];
+        const mounth29 ={
+            2: 'Февраль',
+        }
+
+        const mounth30 = {
+            4: 'Апрель',
+            6: 'Июнь',
+            9: 'Сентябрь',
+            11: 'Ноябрь'
+        };
+
+        const mounth31 = {
+            1: 'Январь',
+            3: 'Март',
+            5: 'Май',
+            7: 'Июль',
+            8: 'Август',
+            10: 'Октябрь',
+            12: 'Декабрь'
+        };
 
         let mounth = this.randomIntNumber(12,1);
 
-        if (mounth == 29) {
+        if (mounth in mounth29) {
             day = this.randomIntNumber(29,1);
         } else if (mounth in mounth30) {
             day = this.randomIntNumber(30,1);
@@ -166,12 +185,21 @@ const personGenerator = {
             day = this.randomIntNumber(31,1);
         }
 
-        day.toString().length == 1 ? day = `0${day}` : day;
-        
-        mounth.toString().length == 1 ? mounth = `0${mounth}` : mounth
-  
+        mounth in mounth29 ? mounth = mounth29[mounth].toString().slice(0,-1) + `я` : mounth ;
 
-        return `${day}.${mounth}.${year}`;
+        mounth in mounth30 ? mounth = mounth30[mounth].toString().slice(0,-1) + `я` : mounth ;
+
+        if (mounth in mounth31) {
+            if (mounth == 3 || mounth == 8){
+                mounth = mounth31[mounth].toString() + `а`;
+            } else {
+                mounth = mounth31[mounth].toString().slice(0,-1) + `я`;
+            }
+        }
+
+        day.toString().length == 1 ? day = `0${day}` : day;
+
+        return `${day} ${mounth.toLowerCase()} ${year}`;
     },
 
     randomProfession: function() {

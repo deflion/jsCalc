@@ -20,6 +20,7 @@ const personGenerator = {
             "id_16": "Морозов"
         }
     }`,
+    
     firstNameMaleJson: `{
         "count": 10,
         "list": {     
@@ -33,6 +34,22 @@ const personGenerator = {
             "id_8": "Даниил",
             "id_9": "Егор",
             "id_10": "Андрей"
+        }
+    }`,
+
+    firstNameFemaleJson: `{
+        "count": 10,
+        "list": {     
+            "id_1": "Алиса",
+            "id_2": "Вера",
+            "id_3": "Дарья",
+            "id_4": "Евгения",
+            "id_5": "Жанна",
+            "id_6": "Инна",
+            "id_7": "Кира",
+            "id_8": "Лана",
+            "id_9": "Марина",
+            "id_10": "Ника"
         }
     }`,
 

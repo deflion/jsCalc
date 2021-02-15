@@ -1,4 +1,27 @@
-.game-card {
+body{
+    background-color: whitesmoke;
+}
+
+.row{
+    width: 100%;
+    overflow: hidden;
+}
+
+.container{
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button button{
+    font-size: 4rem;
+}
+
+.game-card {
     font-family: 'Open Sans', monospace;
+}
+
+.modal{
+    top: 30%;
 }

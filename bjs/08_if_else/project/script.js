@@ -4,7 +4,7 @@
 
 */
 
-function GameStart() {
+function gameStart() {
     minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
     maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));  
 
@@ -78,13 +78,9 @@ function answer(answerType){
     return answerPhrase;
 }
 
-document.addEventListener('DOMContentLoaded', () =>{
-    GameStart();
-})
+document.addEventListener('DOMContentLoaded', () => { gameStart(); })
 
-document.querySelector('#btnRetry').addEventListener('click', function () {
-    GameStart();
-})
+document.querySelector('#btnRetry').addEventListener('click', function () { gameStart(); })
 
 document.querySelector('#btnOver').addEventListener('click', function () {
     if (gameRun){
@@ -107,7 +103,7 @@ document.querySelector('#btnLess').addEventListener('click', function () {
             answerField.innerText = answer('fail');
             gameRun = false;
         } else {
-            maxValue = answerNumber - 1;
+            maxValue = answerNumber;
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;

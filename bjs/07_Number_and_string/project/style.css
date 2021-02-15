@@ -1,0 +1,47 @@
+.card-body{
+    padding-bottom: 0;
+    background: rgb(244 244 244);
+    box-shadow: #bebebe 1px 1px 10px 0px;
+}
+
+.calc-row {
+    height: 100vh;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.calc{
+    margin-top: 10px;
+}
+
+.input-window {
+    text-align: end;
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+
+.input-window::placeholder{
+    color: #e8e8e8;
+}
+
+#history{
+    height: 360px;
+    width: 250px;
+}
+
+#historyList{
+    resize: none;
+    margin-bottom: 1.25rem;
+    display: block;
+    height: 310px;
+}
+
+#historyList[readonly]{
+    background-color: white;
+}
+
+.copyright{
+    display: block;
+    font-size: small;
+    color: #d3d3d3;
+    margin: 10px 0 10px;
+}

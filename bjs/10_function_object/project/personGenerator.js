@@ -20,6 +20,27 @@ const personGenerator = {
             "id_16": "Морозов"
         }
     }`,
+    // patronymicJSON: `{  
+    //     "count": 15,
+    //     "list": {
+    //         "id_1": "Иванов",
+    //         "id_2": "Смирнов",
+    //         "id_3": "Кузнецов",
+    //         "id_4": "Васильев",
+    //         "id_5": "Петров",
+    //         "id_6": "Михайлов",
+    //         "id_7": "Новиков",
+    //         "id_8": "Федоров",
+    //         "id_9": "Кравцов",
+    //         "id_10": "Николаев",
+    //         "id_11": "Семёнов",
+    //         "id_12": "Славин",
+    //         "id_13": "Степанов",
+    //         "id_14": "Павлов",
+    //         "id_15": "Александров",
+    //         "id_16": "Морозов"
+    //     }
+    // }`,
     firstNameMaleJson: `{
         "count": 10,
         "list": {     
@@ -50,19 +71,34 @@ const personGenerator = {
             "id_10": "Ника"
         }
     }`,
-    professionName: `{
+    professionMaleName: `{
         "count": 10,
         "list": {     
-            "id_1": "",
-            "id_2": "",
-            "id_3": "",
-            "id_4": "",
-            "id_5": "",
-            "id_6": "",
-            "id_7": "",
-            "id_8": "",
-            "id_9": "",
-            "id_10": ""
+            "id_1": "Програмист",
+            "id_2": "Врач",
+            "id_3": "Маркетолог",
+            "id_4": "Финансовый аналитик",
+            "id_5": "Инженер",
+            "id_6": "Физик",
+            "id_7": "Электрик",
+            "id_8": "Нефтяник",
+            "id_9": "Автомеханик",
+            "id_10": "Менеджер по продажам"
+        }
+    }`,
+    professionFemaleName: `{
+        "count": 10,
+        "list": {     
+            "id_1": "Фармацевт",
+            "id_2": "Методист",
+            "id_3": "Медсестра",
+            "id_4": "Воспитатель",
+            "id_5": "Врач-косметолог",
+            "id_6": "Логопед",
+            "id_7": "Секретарь",
+            "id_8": "Библиотекарь",
+            "id_9": "Швея",
+            "id_10": "Лаборант"
         }
     }`,
 
@@ -79,8 +115,6 @@ const personGenerator = {
 
     randomGender: function() {
 
-        // alert(this.randomIntNumber(1));
-
         if (this.randomIntNumber(1)) {
             gender = this.GENDER_MALE;
         } else {
@@ -92,13 +126,12 @@ const personGenerator = {
 
     randomFirstName: function() {
 
-        if (gender == `Мужчина`) {
-            firstName = this.randomValue(this.firstNameMaleJson);
+        if (gender == this.GENDER_MALE) {
+            return this.randomValue(this.firstNameMaleJson);
         } else {
-            firstName = this.randomValue(this.firstNameFemaleJson);
+            return this.randomValue(this.firstNameFemaleJson);
         }
 
-        return firstName;
     },
 
     randomSurname: function() {
@@ -106,6 +139,15 @@ const personGenerator = {
             return this.randomValue(this.surnameJson);
         } else {
             return this.randomValue(this.surnameJson) + 'a';
+        }
+    },
+
+    randomPatronymic: function(){
+
+        if (gender == this.GENDER_MALE) {
+            return this.randomValue(this.surnameJson) + 'ич';
+        } else {
+            return '';
         }
     },
 
@@ -132,12 +174,23 @@ const personGenerator = {
         return `${day}.${mounth}.${year}`;
     },
 
+    randomProfession: function() {
+
+        if (gender == this.GENDER_MALE){
+            return this.randomValue(this.professionMaleName);
+        } else {
+            return this.randomValue(this.professionFemaleName);
+        }
+    },
+
     getPerson: function () {
         this.person = {};
         this.person.gender = this.randomGender();
         this.person.firstName = this.randomFirstName();
         this.person.surName = this.randomSurname();
+        this.person.patronymic = this.randomPatronymic();
         this.person.birthYear = this.randomDate();
+        this.person.profession = this.randomProfession();
         return this.person;
     }
 };

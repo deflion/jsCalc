@@ -51,20 +51,18 @@ const personGenerator = {
         }
     }`,
     patronymicJson: `{  
-        "count": 13,
+        "count": 10,
         "list": {
             "id_1": "Иванов",
-            "id_2": "Кузнецов",
-            "id_3": "Васильев",
-            "id_4": "Петров",
-            "id_5": "Михайлов",
-            "id_6": "Новиков",
-            "id_7": "Федоров",
-            "id_8": "Николаев",
-            "id_9": "Семёнов",
-            "id_10": "Степанов",
-            "id_11": "Павлов",
-            "id_12": "Александров"
+            "id_2": "Васильев",
+            "id_3": "Петров",
+            "id_4": "Михайлов",
+            "id_5": "Федоров",
+            "id_6": "Николаев",
+            "id_7": "Семёнов",
+            "id_8": "Степанов",
+            "id_9": "Павлов",
+            "id_10": "Александров"
         }
     }`,
     professionMaleName: `{
@@ -114,11 +112,7 @@ const personGenerator = {
     randomGender: function() {
         /* Генерация гендера*/
 
-        if (this.randomIntNumber(1)) {
-            gender = this.GENDER_MALE;
-        } else {
-            gender = this.GENDER_FEMALE;
-        }
+        gender = (this.randomIntNumber(1)) ? this.GENDER_MALE : this.GENDER_FEMALE;
 
         return gender;
     },
@@ -126,11 +120,9 @@ const personGenerator = {
     randomFirstName: function() {
         /* Генерация имени с привязкой по гендеру */
 
-        if (gender == this.GENDER_MALE) {
-            return this.randomValue(this.firstNameMaleJson);
-        } else {
-            return this.randomValue(this.firstNameFemaleJson);
-        }
+        let firstNameFemaleJson = (gender == this.GENDER_MALE) ? this.firstNameMaleJson : this.firstNameFemaleJson;
+
+        return this.randomValue(firstNameFemaleJson);
 
     },
 
@@ -145,88 +137,46 @@ const personGenerator = {
     },
 
     randomPatronymic: function(){
-        /* Генерация отчества с привязкой по гендеру*/
+        /* Генерация отчества с привязкой по гендеру */
 
         if (gender == this.GENDER_MALE) {
             return this.randomValue(this.patronymicJson) + 'ич';
         } else {
             return this.randomValue(this.patronymicJson) + 'на';
         }
-    },
+    },   
+           
+    randomDate(startDate, endDate) {
+        /* 
+            Генерация даты рождения с отображением месяца прописью 
+            Версия ментора
+        */
 
-    randomDate: function() {
-        /* Генерация даты рождения с отображением месяца прописью */
-
-        let year = this.randomIntNumber(1970,2021);
-
-        const mounth29 ={
-            2: 'Февраль',
+        var startDate = new Date(1950, 0, 1);
+        var endDate = new Date(2005, 11, 31);
+        let date = new Date( + startDate + Math.random() * (endDate - startDate))
+        let options = {
+            year: 'numeric',
+            month: 'long',
+            day: '2-digit'
         }
-
-        const mounth30 = {
-            4: 'Апрель',
-            6: 'Июнь',
-            9: 'Сентябрь',
-            11: 'Ноябрь'
-        };
-
-        const mounth31 = {
-            1: 'Январь',
-            3: 'Март',
-            5: 'Май',
-            7: 'Июль',
-            8: 'Август',
-            10: 'Октябрь',
-            12: 'Декабрь'
-        };
-
-        let mounth = this.randomIntNumber(12,1);
-
-        if (mounth in mounth29) {
-            day = this.randomIntNumber(29,1);
-        } else if (mounth in mounth30) {
-            day = this.randomIntNumber(30,1);
-        } else {
-            day = this.randomIntNumber(31,1);
-        }
-
-        mounth in mounth29 ? mounth = mounth29[mounth].toString().slice(0,-1) + `я` : mounth ;
-
-        mounth in mounth30 ? mounth = mounth30[mounth].toString().slice(0,-1) + `я` : mounth ;
-
-        if (mounth in mounth31) {
-            if (mounth == 3 || mounth == 8){
-                mounth = mounth31[mounth].toString() + `а`;
-            } else {
-                mounth = mounth31[mounth].toString().slice(0,-1) + `я`;
-            }
-        }
-
-        day.toString().length == 1 ? day = `0${day}` : day;
-
-        return `${day} ${mounth.toLowerCase() } ${year}`;
+       
+       return date.toLocaleString("ru", options)
     },
 
     randomProfession: function() {
-        /* Генерация професси с привязкой по гендеру */        
+        /* Генерация професси с привязкой по гендеру */
+        
+        let professionName = (gender == this.GENDER_MALE) ? this.professionMaleName : this.professionFemaleName;
 
-        if (gender == this.GENDER_MALE){
-            return this.randomValue(this.professionMaleName);
-        } else {
-            return this.randomValue(this.professionFemaleName);
-        }
+        return this.randomValue(professionName);
+
     },
 
     genderPhoto: function() {
         /* Генерация фото с привязкой по гендеру */
 
-        let srcPhoto = "nophoto";
-
-        if (gender == this.GENDER_MALE){
-            srcPhoto = "man";
-        } else {
-            srcPhoto = "woman";
-        }
+        let srcPhoto = (gender == this.GENDER_MALE) ? "man" : "woman";
 
         return srcPhoto;
     },

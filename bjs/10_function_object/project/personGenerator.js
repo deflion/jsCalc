@@ -50,6 +50,23 @@ const personGenerator = {
             "id_10": "Ника"
         }
     }`,
+    patronymicJson: `{  
+        "count": 13,
+        "list": {
+            "id_1": "Иванов",
+            "id_2": "Кузнецов",
+            "id_3": "Васильев",
+            "id_4": "Петров",
+            "id_5": "Михайлов",
+            "id_6": "Новиков",
+            "id_7": "Федоров",
+            "id_8": "Николаев",
+            "id_9": "Семёнов",
+            "id_10": "Степанов",
+            "id_11": "Павлов",
+            "id_12": "Александров"
+        }
+    }`,
     professionMaleName: `{
         "count": 10,
         "list": {     
@@ -128,12 +145,12 @@ const personGenerator = {
     },
 
     randomPatronymic: function(){
-        /* Генерация отчества с привязкой по гендеру на основе объекта фамилий */
+        /* Генерация отчества с привязкой по гендеру*/
 
         if (gender == this.GENDER_MALE) {
-            return this.randomValue(this.surnameJson) + 'ич';
+            return this.randomValue(this.patronymicJson) + 'ич';
         } else {
-            return this.randomValue(this.surnameJson) + 'на';
+            return this.randomValue(this.patronymicJson) + 'на';
         }
     },
 

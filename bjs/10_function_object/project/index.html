@@ -10,32 +10,27 @@
 </head>
 <body>
 <div class="container">
-    <div class="row game-card align-items-center">
-        <div class="col col-md-6 offset-md-3">
-            <div class="card text-center">
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="card">
                 <div class="card-header">
-                    <p class="m-0">Окно результатов генерации</p>
+                    <h1 class="m-0">Карточка сотрудника</h1>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="card-title"><span id="surnameOutput">Генерация фамилии</span></h3>
-                            <h2>ФИО:</h2>
-                            <h4><span id="surNameOutput"> </span><br><span id="firstNameOutput"> </span>  <span id="patronymicOutput"> </span></h4>
-                            <p>
-                                <span id="genderOutput"></span>
-                                <span>, </span>
-                                <span id="birthYearOutput"></span>
-                            </p>
-                            <p>
-                                <span id="professionOutput"></span>
-                            </p>
-                        </div>
+                <div class="row">
+                    <div class="col-4 photoPerson">
+                        <img id="photo" src="" alt="">
                     </div>
-                    <div class="row">
+                    <div class="col-8 information">
+                        <h2 class="card-title"><span id="surNameOutput"> </span> <span id="firstNameOutput"> </span>  <span id="patronymicOutput"> </span></h2>
+                        <p><b>Пол:</b> <span id="genderOutput"></span></p>
+                        <p><b>Дата рождения:</b> <span id="birthYearOutput"></span></p>
+                        <p><b>Профессия: </b> <span id="professionOutput"></span></p>
                         <button id="refresh">Сгенерировать</button>
                         <button id="clear">Очистить</button>
                     </div>
+                </div>
+                <div class="row">
+                    
                 </div>
             </div>
         </div>

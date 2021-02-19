@@ -20,27 +20,6 @@ const personGenerator = {
             "id_16": "Морозов"
         }
     }`,
-    // patronymicJSON: `{  
-    //     "count": 15,
-    //     "list": {
-    //         "id_1": "Иванов",
-    //         "id_2": "Смирнов",
-    //         "id_3": "Кузнецов",
-    //         "id_4": "Васильев",
-    //         "id_5": "Петров",
-    //         "id_6": "Михайлов",
-    //         "id_7": "Новиков",
-    //         "id_8": "Федоров",
-    //         "id_9": "Кравцов",
-    //         "id_10": "Николаев",
-    //         "id_11": "Семёнов",
-    //         "id_12": "Славин",
-    //         "id_13": "Степанов",
-    //         "id_14": "Павлов",
-    //         "id_15": "Александров",
-    //         "id_16": "Морозов"
-    //     }
-    // }`,
     firstNameMaleJson: `{
         "count": 10,
         "list": {     
@@ -109,11 +88,14 @@ const personGenerator = {
 
     randomValue: function (json) {
         const obj = JSON.parse(json);
-        const prop = `id_${this.randomIntNumber(obj.count, 1)}`;  // this = personGenerator
+        const prop = `id_${this.randomIntNumber(obj.count, 1)}`; 
+        // this = personGenerator
+        
         return obj.list[prop];
     },
 
     randomGender: function() {
+        /* Генерация гендера*/
 
         if (this.randomIntNumber(1)) {
             gender = this.GENDER_MALE;
@@ -125,6 +107,7 @@ const personGenerator = {
     },
 
     randomFirstName: function() {
+        /* Генерация имени с привязкой по гендеру */
 
         if (gender == this.GENDER_MALE) {
             return this.randomValue(this.firstNameMaleJson);
@@ -135,6 +118,8 @@ const personGenerator = {
     },
 
     randomSurname: function() {
+        /* Генерация фамилии с привязкой по гендеру */
+
         if (gender == this.GENDER_MALE) {
             return this.randomValue(this.surnameJson);
         } else {
@@ -143,6 +128,7 @@ const personGenerator = {
     },
 
     randomPatronymic: function(){
+        /* Генерация отчества с привязкой по гендеру на основе объекта фамилий */
 
         if (gender == this.GENDER_MALE) {
             return this.randomValue(this.surnameJson) + 'ич';
@@ -152,6 +138,8 @@ const personGenerator = {
     },
 
     randomDate: function() {
+        /* Генерация даты рождения с отображением месяца прописью */
+
         let year = this.randomIntNumber(1970,2021);
 
         const mounth29 ={
@@ -203,12 +191,27 @@ const personGenerator = {
     },
 
     randomProfession: function() {
+        /* Генерация професси с привязкой по гендеру */        
 
         if (gender == this.GENDER_MALE){
             return this.randomValue(this.professionMaleName);
         } else {
             return this.randomValue(this.professionFemaleName);
         }
+    },
+
+    genderPhoto: function() {
+        /* Генерация фото с привязкой по гендеру */
+
+        let srcPhoto = "nophoto";
+
+        if (gender == this.GENDER_MALE){
+            srcPhoto = "man";
+        } else {
+            srcPhoto = "woman";
+        }
+
+        return srcPhoto;
     },
 
     getPerson: function () {
@@ -219,6 +222,8 @@ const personGenerator = {
         this.person.patronymic = this.randomPatronymic();
         this.person.birthYear = this.randomDate();
         this.person.profession = this.randomProfession();
+        this.person.genderPhoto = this.genderPhoto();
+        
         return this.person;
     }
 };

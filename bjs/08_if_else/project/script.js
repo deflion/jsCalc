@@ -1,13 +1,25 @@
+
 /*
+Функция начала игры 
+после ввода в модальном окне значений минимума и максимума
+и нажатия кнопки "Загадать"
+*/
 
+document.querySelector('#start').addEventListener('click', function() {
+    document.querySelector('.button').setAttribute('style', 'display:none');
+    document.querySelector('.game').setAttribute('style', 'display:block');
+    gameStart();
+})
+
+/*
 Функция начала игры
-
 */
 
 function gameStart() {
-    minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-    maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));  
 
+    minValue = parseInt(document.querySelector('#minValue').value);
+    maxValue = parseInt(document.querySelector('#maxValue').value);
+    
     if (!isNaN(minValue)){
         minValue = minValue < -999 ? -999 : minValue;
     } else {
@@ -18,9 +30,7 @@ function gameStart() {
         maxValue = maxValue > 999 ? 999 : maxValue;
     } else {
         maxValue = 100;
-    } 
-
-    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+    }     
     answerNumber  = Math.floor((minValue + maxValue) / 2);
     orderNumber = 1;
     gameRun = true;
@@ -33,54 +43,66 @@ function gameStart() {
 }
 
 /*
-
 Функция перевода числа в текст
 
+для написания этой функции не хватает немного навыка
 */
 
 function numToText(number){
-
+    return;
 }
 
 /*
-
 Функция выбора ответа
 при положительном('success'), либо отрицательном('fail') исходе
 Math.trunc отсекает целую часть от Math.random,
-а множитель 8 предпологает более широкий выбор фраз
-
 */
 
 function answer(answerType){
-    phraseRandom = Math.trunc((Math.random() * 8));
+    phraseRandom = Math.trunc((Math.random() * 3));
     answerPhrase = "";
 
     if (answerType == 'fail'){
-        if (phraseRandom <=2) {
-            answerPhrase = `Вы загадали неправильное число!\n\u{1F914}`;
-        } else if (phraseRandom > 2 & phraseRandom <=5) {
-            answerPhrase = `Я сдаюсь..\n\u{1F92F}`;
-        } else {
-            answerPhrase = `Я так не играю\n\u{1F615}`;
+
+        switch(phraseRandom){
+            case 0: 
+                answerPhrase = `Вы загадали неправильное число!\n\u{1F914}`;
+                break;
+            case 1:
+                answerPhrase = `Я сдаюсь..\n\u{1F92F}`;
+                break;
+            default:
+                answerPhrase = `На этом мои полномочия все...`;
         }
     }
 
     if (answerType == "success"){
-        if (phraseRandom <=2) {
-            answerPhrase = `Да это легко! Ты загадал\n`;
-        } else if (phraseRandom > 2 & phraseRandom <=5) {
-            answerPhrase = `Наверное, это число\n`;
-        } else {
-            answerPhrase = `Ну естественно\n`;
+        switch(phraseRandom){
+            case 0: 
+                answerPhrase = `Да это легко! Ты загадал\n`;
+                break;
+            case 1:
+                answerPhrase = `Наверное, это число\n`;
+                break;
+            default:
+                answerPhrase = `Изи! Это же\n`;
         }
     }
 
     return answerPhrase;
 }
 
-document.addEventListener('DOMContentLoaded', () => { gameStart(); })
+// Функция кнопки "Заново" 
 
-document.querySelector('#btnRetry').addEventListener('click', function () { gameStart(); })
+document.querySelector('#btnRetry').addEventListener('click', function () {
+    document.querySelector('.button').setAttribute('style', 'display:block');
+    document.querySelector('.game').setAttribute('style', 'display:none');
+    document.querySelector('#minValue').value = null;
+    document.querySelector('#maxValue').value = null;
+    gameStart();
+})
+
+// Функция кнопки "Больше" 
 
 document.querySelector('#btnOver').addEventListener('click', function () {
     if (gameRun){
@@ -97,13 +119,15 @@ document.querySelector('#btnOver').addEventListener('click', function () {
     }
 })
 
+// Функция кнопки "Меньше" 
+
 document.querySelector('#btnLess').addEventListener('click', function () {
     if (gameRun){
         if (maxValue === minValue){
             answerField.innerText = answer('fail');
             gameRun = false;
         } else {
-            maxValue = answerNumber;
+            maxValue = answerNumber - 1;
             answerNumber  = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
@@ -112,6 +136,8 @@ document.querySelector('#btnLess').addEventListener('click', function () {
     }
 })
 
+// Функция кнопки "Все верно"
+
 document.querySelector('#btnEqual').addEventListener('click', function () {
     if (gameRun){
         answerField.innerText = `${answer('success')} ${answerNumber}`
@@ -119,3 +145,14 @@ document.querySelector('#btnEqual').addEventListener('click', function () {
     }
 })
 
+//Изменение текста в span.min при заполнении input#minValue
+
+document.querySelector('#minValue').addEventListener('keyup', function(){
+    document.querySelector('.min').textContent = document.querySelector('#minValue').value;
+})
+
+//Изменение текста в span.max при заполнении input#maxValue
+
+document.querySelector('#maxValue').addEventListener('keyup', function(){
+    document.querySelector('.max').textContent = document.querySelector('#maxValue').value;
+})

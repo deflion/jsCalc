@@ -147,7 +147,7 @@ const personGenerator = {
         if (gender == this.GENDER_MALE) {
             return this.randomValue(this.surnameJson) + 'ич';
         } else {
-            return '';
+            return this.randomValue(this.surnameJson) + 'на';
         }
     },
 
@@ -199,7 +199,7 @@ const personGenerator = {
 
         day.toString().length == 1 ? day = `0${day}` : day;
 
-        return `${day} ${mounth.toLowerCase()} ${year}`;
+        return `${day} ${mounth.toLowerCase() } ${year}`;
     },
 
     randomProfession: function() {

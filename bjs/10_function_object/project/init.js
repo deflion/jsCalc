@@ -1,24 +1,13 @@
 function generate(bool){
-    if (bool) {
-        const initPerson = personGenerator.getPerson();
-        document.querySelector('#firstNameOutput').innerText = initPerson.firstName;
-        document.querySelector('#surNameOutput').innerText = initPerson.surName;
-        document.querySelector('#patronymicOutput').innerText = initPerson.patronymic;
-        document.querySelector('#genderOutput').innerText = initPerson.gender;
-        document.querySelector('#birthYearOutput').innerText = initPerson.birthYear;
-        document.querySelector('#professionOutput').innerText = initPerson.profession;
-        document.querySelector('#photo').setAttribute('src', `img/${initPerson.genderPhoto}.jpg`);
-        document.querySelector('#photo').setAttribute('alt', `Photo for ${initPerson.genderPhoto} card`);
-    } else {
-        document.querySelector('#firstNameOutput').innerText = "";
-        document.querySelector('#surNameOutput').innerText = "Нет данных";
-        document.querySelector('#patronymicOutput').innerText = "";
-        document.querySelector('#genderOutput').innerText = "Нет данных";
-        document.querySelector('#birthYearOutput').innerText = "Нет данных";
-        document.querySelector('#professionOutput').innerText = "Нет данных";
-        document.querySelector('#photo').setAttribute('src', `img/nophoto.jpg`);
-        document.querySelector('#photo').setAttribute('alt', `nophoto`);
-    }
+    const initPerson = personGenerator.getPerson();
+    document.querySelector('#firstNameOutput').innerText = (bool) ? initPerson.firstName : "";
+    document.querySelector('#surNameOutput').innerText = (bool) ? initPerson.surName : "Нет данных";
+    document.querySelector('#patronymicOutput').innerText = (bool) ? initPerson.patronymic : "";
+    document.querySelector('#genderOutput').innerText = (bool) ? initPerson.gender : "Нет данных";
+    document.querySelector('#birthYearOutput').innerText = (bool) ? initPerson.birthYear : "Нет данных";
+    document.querySelector('#professionOutput').innerText = (bool) ? initPerson.profession : "Нет данных";
+    document.querySelector('#photo').src = (bool) ? `img/${initPerson.genderPhoto}.jpg` : `img/nophoto.jpg`;
+    document.querySelector('#photo').alt = (bool) ? `photo for ${initPerson.genderPhoto} card` : `nophoto`;
         
 };
 

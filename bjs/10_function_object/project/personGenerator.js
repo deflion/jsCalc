@@ -120,40 +120,36 @@ const personGenerator = {
     randomFirstName: function() {
         /* Генерация имени с привязкой по гендеру */
 
-        let firstNameFemaleJson = (gender == this.GENDER_MALE) ? this.firstNameMaleJson : this.firstNameFemaleJson;
+        let firstNameJson = (gender == this.GENDER_MALE) ? this.firstNameMaleJson : this.firstNameFemaleJson;
 
-        return this.randomValue(firstNameFemaleJson);
+        return this.randomValue(firstNameJson);
 
     },
 
     randomSurname: function() {
         /* Генерация фамилии с привязкой по гендеру */
 
-        if (gender == this.GENDER_MALE) {
-            return this.randomValue(this.surnameJson);
-        } else {
-            return this.randomValue(this.surnameJson) + 'a';
-        }
+        let surNameJson = (gender == this.GENDER_MALE) ? this.randomValue(this.surnameJson) : `${this.randomValue(this.surnameJson)}a`;
+
+        return surNameJson;
     },
 
     randomPatronymic: function(){
         /* Генерация отчества с привязкой по гендеру */
 
-        if (gender == this.GENDER_MALE) {
-            return this.randomValue(this.patronymicJson) + 'ич';
-        } else {
-            return this.randomValue(this.patronymicJson) + 'на';
-        }
+        let randomPatronymic = (gender == this.GENDER_MALE) ? `${this.randomValue(this.patronymicJson)}ич` : `${this.randomValue(this.patronymicJson)}на`;
+        
+        return randomPatronymic;   
     },   
            
-    randomDate(startDate, endDate) {
+    randomDate: function() {
         /* 
             Генерация даты рождения с отображением месяца прописью 
             Версия ментора
         */
 
-        var startDate = new Date(1950, 0, 1);
-        var endDate = new Date(2005, 11, 31);
+        let startDate = new Date(1950, 0, 1);
+        let endDate = new Date(2005, 11, 31);
         let date = new Date( + startDate + Math.random() * (endDate - startDate))
         let options = {
             year: 'numeric',
